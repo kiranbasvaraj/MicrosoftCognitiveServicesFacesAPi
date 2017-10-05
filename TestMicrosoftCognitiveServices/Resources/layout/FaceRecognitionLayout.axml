@@ -3,15 +3,34 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <ImageView android:id="@+id/imageView1"
-             android:layout_height="100dp"
-             android:layout_width="100dp"></ImageView>
-  <ImageView android:id="@+id/imageView2"
-             android:layout_height="150dp"
-             android:layout_width="150dp"></ImageView>
-
-  <Button    android:id="@+id/verifyButton"
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:text="Verify"/>
+ 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_height="100dp"
+        android:layout_width="100dp" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_height="150dp"
+        android:layout_width="150dp" />
+    <Button
+        android:id="@+id/verifyButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Verify" />
+    <!--<LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+      <ImageView
+          android:id="@+id/intentImage1"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          />
+      <ImageView
+          android:id="@+id/intentImage2"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          />
+    </LinearLayout>-->
+ 
 </LinearLayout>

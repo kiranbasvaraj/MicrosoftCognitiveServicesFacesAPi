@@ -22,11 +22,15 @@ namespace TestMicrosoftCognitiveServices.Activities
     {
         public ImageView _firstImage;
         public ImageView _secondImage;
+        public ImageView _intentFirstImage;
+        public ImageView _IntentSecondImage;
         public Button _verifyButton;
         public Bitmap _firstImageBitmap { get; set; }
         public Bitmap _secondImageBitmap { get; set; }
         FaceRecognitionHelperTask _helper;
         ProgressDialog _pd;
+      
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,10 +55,32 @@ namespace TestMicrosoftCognitiveServices.Activities
             _verifyButton = FindViewById<Button>(Resource.Id.verifyButton);
             _firstImage.SetImageBitmap(_firstImageBitmap);
             _secondImage.SetImageBitmap(_secondImageBitmap);
+            _intentFirstImage = FindViewById<ImageView>(Resource.Id.intentImage1);
+            _IntentSecondImage = FindViewById<ImageView>(Resource.Id.intentImage2);
         }
         void HandleEvents()
         {
             _verifyButton.Click += _verifyButton_Click;
+            _intentFirstImage.Click += _intentFirstImage_Click;
+        }
+
+        private void _intentFirstImage_Click(object sender, EventArgs e)
+        {
+            var imageIntent = new Intent();
+            imageIntent.SetType("image/*");
+            imageIntent.SetAction(Intent.ActionGetContent);
+            StartActivityForResult(
+                Intent.CreateChooser(imageIntent, "Select photo"), 0);
+        }
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == Result.Ok)
+            {
+
+                _intentFirstImage.SetImageURI(data.Data);
+            }
         }
 
         private async void _verifyButton_Click(object sender, EventArgs e)

@@ -26,15 +26,12 @@ namespace TestMicrosoftCognitiveServices.Helpers
         public List<FaceModel> FaceObject1 { get; set; }
         public List<FaceModel> FaceObject2 { get; set; }
        public static EventHandler Handler { get; set; }
-        public FaceRecognitionHelper()
-        {
-
-            
-        }
+     
         public List<FaceModel> GetFirstFaceId(Stream imageStream)
         {
-            try
+           try 
             {
+               
 
                 var faceServiceClient = new FaceServiceRestClient("https://westcentralus.api.cognitive.microsoft.com/face/v1.0", "a7c0326b9c374041808d54073dd15932");
                 Xamarin.Cognitive.Face.Droid.Contract.Face[] result = faceServiceClient.Detect(imageStream, true, true, null);
